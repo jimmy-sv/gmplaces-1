@@ -120,7 +120,7 @@ function addReq(position, description) {
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
-    var url = "/gmplaces/putdata?lat="+position.lat+"&lng="+position.lng+"&description="+description;
+    var url = "/gmplaces/putdata?lat="+position.lat()+"&lng="+position.lng()+"&description="+description;
     xmlhttp.open("GET", url, true);
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4) {
@@ -145,7 +145,7 @@ function removeReq(position) {
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
-    var url = "/gmplaces/removedata?lat="+position.lat+"&lng="+position.lng;
+    var url = "/gmplaces/removedata?lat="+position.lat()+"&lng="+position.lng();
     xmlhttp.open("GET", url, true);
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4) {
