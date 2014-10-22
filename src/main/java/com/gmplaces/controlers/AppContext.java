@@ -1,6 +1,7 @@
 package com.gmplaces.controlers;
 
 
+import com.gmplaces.models.DataServiceImpl;
 import com.gmplaces.models.DataServiceImplStub;
 import com.gmplaces.models.IDataService;
 
@@ -16,7 +17,7 @@ public class AppContext implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext ctx = servletContextEvent.getServletContext();
-        IDataService dataService = new DataServiceImplStub();
+        IDataService dataService = new DataServiceImpl();
         ctx.setAttribute("dataservice",dataService);
     }
 

@@ -22,7 +22,7 @@ import java.util.List;
 
 public class DataServiceImpl implements IDataService {
 
-    private final File file = new File("C:\\addresses.xml");
+    private final File file = new File("./log/addresses.xml");
 
     //return all data from xml
     public List<Address> getData() {
