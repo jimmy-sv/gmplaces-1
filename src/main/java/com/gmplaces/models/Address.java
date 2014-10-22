@@ -3,27 +3,27 @@ package com.gmplaces.models;
 
 public class Address {
 
-    private long lat;
-    private long lng;
+    private double lat;
+    private double lng;
     private String description;
 
-    public  Address (long lat, long lng, String desc){
+    public  Address (double lat, double lng, String desc){
         this.lat = lat;
         this.lng = lng;
         this.description = desc;
     }
 
-    public  Address (long lat, long lng){
+    public  Address (double lat, double lng){
         this.lat = lat;
         this.lng = lng;
         this.description =  "";
     }
 
-    public long getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public long getLng() {
+    public double getLng() {
         return lng;
     }
 

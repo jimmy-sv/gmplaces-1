@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IDataService {
 
-    public String putData(long lat,long lng, String description);
+    public String putData(Address address);
 
     public List<Address> getData();
 

@@ -2,12 +2,46 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+  <display-name>gmplaces</display-name>
 
   <welcome-file-list>
     <welcome-file>views/index.jsp</welcome-file>
   </welcome-file-list>
+
+    <listener>
+        <listener-class>com.gmplaces.controlers.AppContext</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>GetData</servlet-name>
+        <servlet-class>com.gmplaces.controlers.GetDataControler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetData</servlet-name>
+        <url-pattern>/getdata</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PutData</servlet-name>
+        <servlet-class>com.gmplaces.controlers.PutDataControler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PutData</servlet-name>
+        <url-pattern>/putdata</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClearData</servlet-name>
+        <servlet-class>com.gmplaces.controlers.ClearDataControler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClearData</servlet-name>
+        <url-pattern>/cleardata</url-pattern>
+    </servlet-mapping>
 
 </web-app>
 
