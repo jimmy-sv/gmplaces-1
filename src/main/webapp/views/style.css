@@ -2,41 +2,41 @@
 /* CSS Document */
 
 #main{
-    width: 800px;
-    margin:auto;
-    padding:0px;
+	width: 800px;
+	margin:auto;
+	padding:0px;
 }
 
 .text{
-    display:inline-block;
-    margin-left:10px;
-    margin-right:10px;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
 }
 
 .form{
-    display:inline-block;
+	display:inline-block;
 }
 
 .controls{
-    border-radius: 4px;
-    border: 2px solid #0066FF;
-    border-left: none;
-    border-right:none;
-    margin:auto;
-    padding-top:8px;
-    height:30px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:14px;
-    font : #0066FF;
+	border-radius: 4px;
+	border: 2px solid #0066FF;
+	border-left: none;
+	border-right:none;
+	margin:auto;
+	padding-top:8px;
+	height:30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font : #0066FF;
 }
 
 #address_string{
-    width:564px;
+width:500px;
 }
 
 #map_container{
-    margin:auto;
-    padding:1px;
-    border:none;
-    height:500px;
+	margin:auto;
+	padding:1px;
+	border:none;
+	height:500px;
 }
