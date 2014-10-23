@@ -121,7 +121,7 @@ function parseRequest() {
     ATMs = JSON.parse(xmlhttp.responseText);
     for (var i = 0; i < ATMs.length; i++) {
 		var address = ATMs[i];
-   		addMarker({"lat" : address.lat, "lng" : address.lng}, address.description);
+   		addMarker({"lat" : address.latitude, "lng" : address.longitude}, address.description);
 	}
 };
 
