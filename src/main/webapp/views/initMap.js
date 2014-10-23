@@ -119,9 +119,9 @@ function getReq() {
 //Receiving data about markers from server and adding marker to map
 function parseRequest() {
     ATMs = JSON.parse(xmlhttp.responseText);
-    for (var i = 0; i < ATMs.points.length; i++) {
+    for (var i = 0; i < ATMs.length; i++) {
 		var address = ATMs[i];
-   		addMarker({"lat" : address.lat(), "lng" : address.lng()}, address.description , "ATM");
+   		addMarker({"lat" : address.lat, "lng" : address.lng}, address.description);
 	}
 };
 
@@ -152,7 +152,7 @@ function addReq(position, description) {
   		if (xmlhttp.readyState == 4) {
      		if(xmlhttp.status == 200) {
        			reqResult = JSON.parse(xmlhttp.responseText);
-				if(reqResult.codeAns == "OK"){
+				if(reqResult.codeAns == "SUCCESS"){
 					window.alert("Point was successfully added to XML in server");
 				} else {
 					window.alert("Point wasn't added to XML in server");
@@ -177,7 +177,7 @@ function removeReq(position) {
   		if (xmlhttp.readyState == 4) {
      		if(xmlhttp.status == 200) {
        			reqResult = JSON.parse(xmlhttp.responseText);
-				if(reqResult.codeAns == "OK"){
+				if(reqResult.codeAns == "SUCCESS"){
 					window.alert("Point was successfully removed from XML in server");
 				} else {
 					window.alert("Point wasn't removed from XML in server");
