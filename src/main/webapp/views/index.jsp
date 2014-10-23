@@ -13,7 +13,7 @@
     	<div id = "address" class="controls">
         	<div class="text">Enter your address</div>
             <div class = "form">
-        		<form>
+        		<form method = "POST" action="" onSubmit="return setLocationByAddress()">
             		<input type="text" name="address_string" id="address_string" />
             		<input type="button" name="submit_address" id="submit_address" value="Find address" onClick = "setLocationByAddress()"/>
        		  </form>
@@ -28,7 +28,6 @@
           		<form>
             		<input type="text" name="description" id="description" />
                     <input type="button" name="add_to_favorites" id="add_to_favorites" value="Add to favorites" onClick = "addToFav()"/>
-                    <input type="button" name="get_req" id="get_req" value="Get all favorites" onClick = "getReq()"/>
                     <input type="button" name="del_req" id="del_req" value="Delete all favorites" onClick = "clearAll()"/>
           		</form>
             </div>
