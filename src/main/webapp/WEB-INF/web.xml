@@ -40,7 +40,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ClearData</servlet-name>
-        <url-pattern>/cleardata</url-pattern>
+        <url-pattern>/clearalldata</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClearSingleData</servlet-name>
+        <servlet-class>com.gmplaces.controlers.ClearSingleDataControler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClearSingleData</servlet-name>
+        <url-pattern>/removedata</url-pattern>
     </servlet-mapping>
 
 </web-app>

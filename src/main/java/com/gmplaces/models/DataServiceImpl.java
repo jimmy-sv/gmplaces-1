@@ -62,7 +62,7 @@ public class DataServiceImpl implements IDataService {
     }
 
     //clear all data from xml file
-    public void clearData() {
+    public String clearData() {
         Document doc = null;
         try {
             if (file.exists()) {
@@ -73,7 +73,9 @@ public class DataServiceImpl implements IDataService {
             }
         } catch (Exception e) {
             System.out.println("some exception!");
+            return "ERROR";
         }
+        return "OK";
     }
     //remove specific address from xml file
     //returns status of operation

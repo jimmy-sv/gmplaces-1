@@ -28,19 +28,18 @@ public class PutDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         String result;
         try{
-            logger.info("PutDataControler input data lat:" + request.getParameter("lat") );
+            logger.debug("PutDataControler input data lat:" + request.getParameter("lat") );
             double lat = Double.valueOf(request.getParameter("lat"));
-            logger.info("PutDataControler input data lng:" + request.getParameter("lng") );
+            logger.debug("PutDataControler input data lng:" + request.getParameter("lng") );
             double lng = Double.valueOf(request.getParameter("lng"));
-            logger.info("PutDataControler input data description:" + request.getParameter("description") );
+            logger.debug("PutDataControler input data description:" + request.getParameter("description") );
             String desc = String.valueOf(request.getParameter("description"));
             Address addr = new Address(lat,lng,desc);
-
             result  = dataService.putData(addr);
-            logger.info("PutDataControler result:" + result);
+            logger.debug("PutDataControler call putData() result:" + result);
         } catch (Exception exp) {
             result = "Fatal ERROR";
-            logger.info(exp.getMessage());
+            logger.info("ERROR: PutDataControler call putData()"+exp.getMessage());
         }
 
         CodeAns ans = new CodeAns(result);

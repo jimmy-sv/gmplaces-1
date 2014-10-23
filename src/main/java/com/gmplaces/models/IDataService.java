@@ -15,7 +15,7 @@ public interface IDataService {
     public List<Address> getData();
 
     //clear all data
-    public void clearData();
+    public String clearData();
 
     //remove specific address from file
     public String removeData(Address address);

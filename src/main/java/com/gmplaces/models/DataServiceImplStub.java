@@ -32,4 +32,9 @@ public class DataServiceImplStub implements IDataService {
     public String clearData() {
         return "OK";
     }
+
+    @Override
+    public String removeData(Address address) {
+        return "OK";
+    }
 }

@@ -14,6 +14,12 @@ public class Address {
         this.description = description;
     }
 
+    public Address(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.description = "";
+    }
+
     public double getLatitude() {
         return latitude;
     }
