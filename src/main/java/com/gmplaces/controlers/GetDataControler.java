@@ -27,6 +27,7 @@ public class GetDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         try{
             List<Address> list = dataService.getData();
+            logger.debug("GetDataControler getData(), list size: "+String.valueOf(list.size()));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(new Gson().toJson(list));
