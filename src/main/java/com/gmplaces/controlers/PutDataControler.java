@@ -28,6 +28,7 @@ public class PutDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         String result;
         try{
+            request.setCharacterEncoding("UTF-8");
             logger.debug("PutDataControler input data lat:" + request.getParameter("lat") );
             double lat = Double.valueOf(request.getParameter("lat"));
             logger.debug("PutDataControler input data lng:" + request.getParameter("lng") );

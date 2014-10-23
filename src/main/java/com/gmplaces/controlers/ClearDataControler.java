@@ -35,6 +35,7 @@ public class ClearDataControler extends HttpServlet {
 
         try{
             result = dataService.clearData();
+            logger.debug("ClearDataControler call clearData(), result: "+result);
         } catch (Exception exp) {
            logger.info("ERROR: ClearDataControler "+exp.getMessage());
            result = "FATAL ERROR";

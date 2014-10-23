@@ -60,7 +60,7 @@ function addMarker(position, title){
 		title: title
 	});
 	marker.setMap(map);
-	marker.setIcon("resources/savedMarker.png");
+	marker.setIcon("views/savedMarker.png");
 	markers.push(marker);
 	//Removing marker from map and sending request for removing to server
 	google.maps.event.addListener(marker, 'click', function removeMarker() {
