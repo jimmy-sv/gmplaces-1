@@ -75,7 +75,7 @@ public class DataServiceImpl implements IDataService {
             System.out.println("some exception!");
             return "ERROR";
         }
-        return "OK";
+        return "SUCCESS";
     }
     //remove specific address from xml file
     //returns status of operation
