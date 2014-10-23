@@ -15,6 +15,7 @@ function initialize() {
 		zoom: 14
 	};
 	map = new google.maps.Map(document.getElementById('map_container'), defaultMapOptions);
+	getReq();
 	//Adding marker to map in click_point and sending addRequest to server
 	//currently unavailable
 	/*
@@ -64,7 +65,7 @@ function addMarker(position, title){
 	markers.push(marker);
 	//Removing marker from map and sending request for removing to server
 	google.maps.event.addListener(marker, 'click', function removeMarker() {
-	                                                   if(marker != currentMarker){//If this marker not in current position marker then remove
+	                                                   if(window.confirm("Are you sure?")){//If this marker not in current position marker then remove
                                                             marker.setMap(null);
                                                             removeReq(marker.getPosition());
                                                        }
@@ -74,26 +75,27 @@ function addMarker(position, title){
 //Setting current position to address given in text_field
 function setLocationByAddress(){
 	var addres_str = document.getElementById("address_string").value;
-		if(addres_str != ""){
-			var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({'address' : addres_str}, function(data, status){
-            	if(status == google.maps.GeocoderStatus.OK){
-            	    if(currentMarker != null){
-            	        currentMarker.setMap(null);
-            	    };
-            		currentPosition = {lat : data[0].geometry.location.lat(), lng : data[0].geometry.location.lng()};
-            		currentMarker = new google.maps.Marker({
-                                    		position: currentPosition,
-                                    		map: map,
-                                    		title: ""
-                                    	});
-                    currentMarker.setMap(map);
-            	    map.panTo(currentPosition);
-            	} else {
-            		window.alert("Address is invalid");
-            	}
-            })
-		}
+	if(addres_str != ""){
+		var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address' : addres_str}, function(data, status){
+            if(status == google.maps.GeocoderStatus.OK){
+            	if(currentMarker != null){
+            	    currentMarker.setMap(null);
+            	};
+            	currentPosition = {lat : data[0].geometry.location.lat(), lng : data[0].geometry.location.lng()};
+            	currentMarker = new google.maps.Marker({
+                                    	position: currentPosition,
+                                    	map: map,
+                                    	title: ""
+                                    });
+                currentMarker.setMap(map);
+            	map.panTo(currentPosition);
+            } else {
+            	window.alert("Address is invalid");
+            }
+        })
+	}
+	return false;	
 };
 
 //Sending request to server for ATMs
@@ -121,7 +123,7 @@ function parseRequest() {
     ATMs = JSON.parse(xmlhttp.responseText);
     for (var i = 0; i < ATMs.length; i++) {
 		var address = ATMs[i];
-   		addMarker({"lat" : address.lat, "lng" : address.lng}, address.description);
+   		addMarker({"lat" : address.latitude, "lng" : address.longitude}, address.description);
 	}
 };
 
@@ -191,6 +193,7 @@ function removeReq(position) {
 //Clearing all favorites from server and map
 function clearAll(){
 	//Sending request to server to delete all favorites
+  if(window.confirm("Are you sure?")){	
     xmlhttp=GetXmlHttpObject();
 
     if (xmlhttp==null){
@@ -205,6 +208,7 @@ function clearAll(){
 		markers[i].setMap(null);
 	}
 	markers = [];
+  }
 }
 
 //Creating GET HTTP request object
