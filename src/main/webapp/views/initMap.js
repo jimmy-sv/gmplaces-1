@@ -65,7 +65,7 @@ function addMarker(position, title){
 	markers.push(marker);
 	//Removing marker from map and sending request for removing to server
 	google.maps.event.addListener(marker, 'click', function removeMarker() {
-	                                                   if(marker != currentMarker){//If this marker not in current position marker then remove
+	                                                   if(window.confirm("Are you sure?")){//If this marker not in current position marker then remove
                                                             marker.setMap(null);
                                                             removeReq(marker.getPosition());
                                                        }
@@ -193,6 +193,7 @@ function removeReq(position) {
 //Clearing all favorites from server and map
 function clearAll(){
 	//Sending request to server to delete all favorites
+  if(window.confirm("Are you sure?")){	
     xmlhttp=GetXmlHttpObject();
 
     if (xmlhttp==null){
@@ -207,6 +208,7 @@ function clearAll(){
 		markers[i].setMap(null);
 	}
 	markers = [];
+  }
 }
 
 //Creating GET HTTP request object
