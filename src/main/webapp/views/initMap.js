@@ -221,6 +221,28 @@ function GetXmlHttpObject(){
     }
  	return null;
 }
+//Drawing circle 
+function drawCircle(){
+    var circleRadius = document.getElementById("circleRadius").value;
+    if(circleRadius != "") {
+        var circleOptions = {
+              strokeColor: '#0000FF',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#0000FF',
+              fillOpacity: 0.05,
+              map: map,
+              center: currentPosition,
+              radius: parseInt(circleRadius)
+            };
+        try{//error if it is first running of this function
+            circleAroundMe.setMap(null);
+        } finally{
+            circleAroundMe = new google.maps.Circle(circleOptions);
+        }
+    }
+
+}
 
 
 //
