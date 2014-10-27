@@ -1,6 +1,5 @@
 package com.gmplaces.controlers;
 
-import com.gmplaces.models.Address;
 import com.gmplaces.models.IDataService;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
@@ -11,19 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import static com.gmplaces.controlers.ClassName.getCurrentClassName;
+import static com.gmplaces.controlers.Utils.parseExceptions;
 
-/**
- * Created with IntelliJ IDEA.
- * User: svertepniy
- * Date: 22.10.14
- * Time: 9:41
- * To change this template use File | Settings | File Templates.
- */
+
 public class ClearDataControler extends HttpServlet {
 
-    final Logger logger = Logger.getLogger(getCurrentClassName());
+    final Logger logger = Logger.getLogger(ClearDataControler.class);
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -34,11 +26,16 @@ public class ClearDataControler extends HttpServlet {
         String result;
 
         try{
+
             result = dataService.clearData();
-            logger.debug("ClearDataControler call clearData(), result: "+result);
+            logger.debug("result: "+result);
+
         } catch (Exception exp) {
-           logger.info("ERROR: ClearDataControler "+exp.getMessage());
-           result = "FATAL ERROR";
+
+            logger.error(parseExceptions(exp));
+
+            result = "ERROR";
+
         }
 
         CodeAns ans = new CodeAns(result);

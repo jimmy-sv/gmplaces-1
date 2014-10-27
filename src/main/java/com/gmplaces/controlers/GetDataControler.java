@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import static com.gmplaces.controlers.ClassName.getCurrentClassName;
+import static com.gmplaces.controlers.Utils.parseExceptions;
 
 
 public class GetDataControler extends HttpServlet {
 
-    final Logger logger = Logger.getLogger(getCurrentClassName());
+    final Logger logger = Logger.getLogger(GetDataControler.class);
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -27,12 +27,13 @@ public class GetDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         try{
             List<Address> list = dataService.getData();
-            logger.debug("GetDataControler getData(), list size: "+String.valueOf(list.size()));
+
+            logger.debug("list size: "+String.valueOf(list.size()));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(new Gson().toJson(list));
-        } catch (Exception exp) {
-            logger.info("ERROR: GetDataControler" + exp.getMessage());
+       } catch (Exception exp) {
+            logger.error(parseExceptions(exp));
         }
     }
 

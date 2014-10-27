@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.gmplaces.controlers.ClassName.getCurrentClassName;
+import static com.gmplaces.controlers.Utils.parseExceptions;
 
 
 public class ClearSingleDataControler extends HttpServlet {
 
-    final Logger logger = Logger.getLogger(getCurrentClassName());
+    final Logger logger = Logger.getLogger(ClearSingleDataControler.class);
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -28,16 +28,16 @@ public class ClearSingleDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         String result;
         try{
-            logger.debug("ClearSingleDataControler input data lat:" + request.getParameter("lat") );
+            logger.debug("input data lat:" + request.getParameter("lat") );
             double lat = Double.valueOf(request.getParameter("lat"));
-            logger.debug("ClearSingleDataControler input data lng:" + request.getParameter("lng") );
+            logger.debug("input data lng:" + request.getParameter("lng") );
             double lng = Double.valueOf(request.getParameter("lng"));
             Address addr = new Address(lat,lng);
             result  = dataService.removeData(addr);
-            logger.debug("ClearSingleDataControler call removeData()  result:" + result);
+            logger.debug("result:" + result);
         } catch (Exception exp) {
-            logger.info("ERROR: ClearSingleDataControler call removeData() "+exp.getMessage());
-            result = "Fatal ERROR";
+            logger.info(parseExceptions(exp));
+            result = "ERROR";
         }
 
         CodeAns ans = new CodeAns(result);

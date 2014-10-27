@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import static com.gmplaces.controlers.ClassName.getCurrentClassName;
+
+import static com.gmplaces.controlers.Utils.parseExceptions;
 
 
 public class PutDataControler extends HttpServlet {
 
-    final Logger logger = Logger.getLogger(getCurrentClassName());
+    final Logger logger = Logger.getLogger(PutDataControler.class);
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -29,18 +29,18 @@ public class PutDataControler extends HttpServlet {
         String result;
         try{
             request.setCharacterEncoding("UTF-8");
-            logger.debug("PutDataControler input data lat:" + request.getParameter("lat") );
+            logger.debug("input data lat:" + request.getParameter("lat") );
             double lat = Double.valueOf(request.getParameter("lat"));
-            logger.debug("PutDataControler input data lng:" + request.getParameter("lng") );
+            logger.debug("input data lng:" + request.getParameter("lng") );
             double lng = Double.valueOf(request.getParameter("lng"));
-            logger.debug("PutDataControler input data description:" + request.getParameter("description") );
+            logger.debug("input data description:" + request.getParameter("description") );
             String desc = String.valueOf(request.getParameter("description"));
             Address addr = new Address(lat,lng,desc);
             result  = dataService.putData(addr);
-            logger.debug("PutDataControler call putData() result:" + result);
+            logger.debug("result:" + result);
         } catch (Exception exp) {
-            result = "Fatal ERROR";
-            logger.info("ERROR: PutDataControler call putData()"+exp.getMessage());
+            result = "ERROR";
+            logger.info(parseExceptions(exp));
         }
 
         CodeAns ans = new CodeAns(result);
