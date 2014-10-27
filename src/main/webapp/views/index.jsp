@@ -13,7 +13,7 @@
     	<div id = "address" class="controls">
         	<div class="text">Enter your address</div>
             <div class = "form">
-        		<form method = "POST" action="" onSubmit="return setLocationByAddress()">
+        		<form  action="" onSubmit="return setLocationByAddress()">
             		<input type="text" name="address_string" id="address_string" />
             		<input type="button" name="submit_address" id="submit_address" value="Find address" onClick = "setLocationByAddress()"/>
        		  </form>
@@ -23,13 +23,20 @@
 
         </div>
         <div id = "controls" class="controls">
-        	<div class="text">Description</div>
             <div class="form">
-          		<form>
-            		<input type="text" name="description" id="description" />
+                <form>
+                    <b>Description</b>
+                    <input type="text" name="description" id="description" />
                     <input type="button" name="add_to_favorites" id="add_to_favorites" value="Add to favorites" onClick = "addToFav()"/>
                     <input type="button" name="del_req" id="del_req" value="Delete all favorites" onClick = "clearAll()"/>
-          		</form>
+                </form>
+            </div>
+            <div class="form">
+                <form action="" onSubmit="return drawCircle()">
+                    <b>Circle radius</b>
+                    <input type="text" name="circleRadius" id="circleRadius" />
+                    <input type="button" name="drawCircleButton" id="drawCircleButton" value="Draw circle" onClick = "drawCircle()"/>
+                </form>
             </div>
         </div>
 </div>

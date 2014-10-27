@@ -24,14 +24,25 @@
 	border-right:none;
 	margin:auto;
 	padding-top:8px;
-	height:30px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
 	font : #0066FF;
 }
 
 #address_string{
-width:500px;
+    width:500px;
+}
+
+#address{
+    height:30px;
+}
+
+#controls{
+	height:60px;
+}
+
+#description{
+    width:400px;
 }
 
 #map_container{
