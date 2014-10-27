@@ -13,12 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+<<<<<<< HEAD
 import static com.gmplaces.controlers.Utils.parseExceptions;
+=======
+import static com.gmplaces.controlers.ClassName.getCurrentClassName;
+>>>>>>> 842b895293614b6a1ecc0a62c74af4a71dfc2037
 
 
 public class ClearSingleDataControler extends HttpServlet {
 
+<<<<<<< HEAD
     final Logger logger = Logger.getLogger(ClearSingleDataControler.class);
+=======
+    final Logger logger = Logger.getLogger(getCurrentClassName());
+>>>>>>> 842b895293614b6a1ecc0a62c74af4a71dfc2037
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -28,6 +36,7 @@ public class ClearSingleDataControler extends HttpServlet {
         IDataService dataService = (IDataService)ctx.getAttribute("dataservice");
         String result;
         try{
+<<<<<<< HEAD
             logger.debug("input data lat:" + request.getParameter("lat") );
             double lat = Double.valueOf(request.getParameter("lat"));
             logger.debug("input data lng:" + request.getParameter("lng") );
@@ -38,6 +47,18 @@ public class ClearSingleDataControler extends HttpServlet {
         } catch (Exception exp) {
             logger.info(parseExceptions(exp));
             result = "ERROR";
+=======
+            logger.debug("ClearSingleDataControler input data lat:" + request.getParameter("lat") );
+            double lat = Double.valueOf(request.getParameter("lat"));
+            logger.debug("ClearSingleDataControler input data lng:" + request.getParameter("lng") );
+            double lng = Double.valueOf(request.getParameter("lng"));
+            Address addr = new Address(lat,lng);
+            result  = dataService.removeData(addr);
+            logger.debug("ClearSingleDataControler call removeData()  result:" + result);
+        } catch (Exception exp) {
+            logger.info("ERROR: ClearSingleDataControler call removeData() "+exp.getMessage());
+            result = "Fatal ERROR";
+>>>>>>> 842b895293614b6a1ecc0a62c74af4a71dfc2037
         }
 
         CodeAns ans = new CodeAns(result);
